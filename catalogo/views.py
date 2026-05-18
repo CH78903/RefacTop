@@ -1,3 +1,7 @@
-from django.shortcuts import render
+om django.shortcuts import render, get_object_or_404
+from .models import Auto
 
-# Create your views here.
+def home(request):
+    busqueda = request.GET.get('buscar')
+    if busqueda:
+        autos = Auto.objects.filter(modelo__icontains=busqueda)
