@@ -1,0 +1,25 @@
+{% extends 'catalogo/base.html' %}
+{% block title %}{{ auto.marca.nombre }} {{ auto.modelo }}{% endblock %}
+
+{% block content %}
+    <div style="display: flex; gap: 40px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+        <div style="flex: 1;">
+            {% if auto.imagen %}
+                <img src="{{ auto.imagen.url }}" style="width: 100%; border-radius: 10px;">
+            {% endif %}
+        </div>
+        <div style="flex: 1;">
+            <h2>{{ auto.marca.nombre }} - {{ auto.modelo }} ({{ auto.anio }})</h2>
+            <hr>
+            <p style="font-size: 1.5em; color: #28a745;"><b>Precio: ${{ auto.precio }}</b></p>
+            <h3>Información Adicional:</h3>
+            <ul>
+                <li><b>País de origen:</b> {{ auto.marca.pais_origen }}</li>
+                <li><b>Ubicación:</b> {{ auto.sucursal.nombre }} ({{ auto.sucursal.direccion }})</li>
+                <li><b>Vendedor asignado:</b> {{ auto.vendedor.nombre }}</li>
+                <li><b>Contacto:</b> {{ auto.vendedor.email }}</li>
+            </ul>
+            <a href="{% url 'home' %}" style="color: #666;">&larr; Volver al catálogo</a>
+        </div>
+    </div>
+{% endblock %}
