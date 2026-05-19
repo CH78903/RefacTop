@@ -16,6 +16,10 @@ class Sucursal(models.Model):
     direccion = models.CharField(max_length=200)
     def __str__(self): return self.nombre
 
+class Accesorio(models.Model):
+    nombre = models.CharField(max_length=100) 
+    def __str__(self): return self.nombre
+
 class Auto(models.Model):
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE) 
     modelo = models.CharField(max_length=100)
@@ -24,6 +28,9 @@ class Auto(models.Model):
     imagen = models.ImageField(upload_to='autos/', null=True, blank=True)
     vendedor = models.ForeignKey(Vendedor, on_delete=models.SET_NULL, null=True)
     sucursal = models.ForeignKey(Sucursal, on_delete=models.SET_NULL, null=True)
+    
+    accesorios = models.ManyToManyField(Accesorio, blank=True)
+    
     def __str__(self): return f"{self.marca} {self.modelo} ({self.anio})"
 
 class Cliente(models.Model):
