@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}RefacTop{% endblock %}</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; color: #333; }
+        nav { background: #2c3e50; padding: 15px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .main-container { padding: 20px; max-width: 1200px; margin: 0 auto; }
+        footer { text-align: center; padding: 20px; background: #ddd; margin-top: 40px; }
+        .btn { background: #0056b3; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">🏠 Inicio</a>
+        <a href="/admin">⚙️ Administración</a>
+    </nav>
+    <div class="main-container">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>&copy; 2026 RefacTop - La cima en refacciones automotrices.</footer>
+</body>
+</html>
